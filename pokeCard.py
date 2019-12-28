@@ -17,5 +17,11 @@ if response:
 	# Generating Random Card
 	rand = random.randrange(0, len(cards), 1)
 	image = cards[rand]["imageUrlHiRes"]
+	# Displaying PokeCard generated.
+	img_response = requests.get(image)
+	with open("pokemon.png",'wb') as f:
+		f.write(img_response.content) 
+	os.system("shotwell pokemon.png")
+	os.remove("pokemon.png")
 else:
 	print("Please Enter a valid Pokemon name")
